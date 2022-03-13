@@ -1,4 +1,4 @@
-import { ControlledMenu, MenuDivider, MenuItem } from '@szhsin/react-menu'
+import { ControlledMenu, MenuDivider, MenuItem, SubMenu } from '@szhsin/react-menu'
 import React, { useEffect, useState } from 'react'
 
 const colors = ["d81e5b","f0544f","fdf0d5","c6d8d3","bac1b8","58a4b0"]
@@ -17,6 +17,7 @@ const ContextMenus = ({ contextData, anchorPoint, ev}) => {
         left: anchorPoint.x
       }}>
         <ControlledMenu anchorPoint={anchorPoint} state={open ? "open" : "closed"}>
+            <SubMenu label='Add' direction='right' position='anchor'>
             <MenuItem className={"noselect"} onClick={(e) => {
               ev({
                 title: `Untitled Note`,
@@ -28,8 +29,9 @@ const ContextMenus = ({ contextData, anchorPoint, ev}) => {
                 type: "note"
               })
             }}>
-                Add
+                Note
             </MenuItem>
+            </SubMenu>
             <MenuItem>
                 Delete
             </MenuItem>

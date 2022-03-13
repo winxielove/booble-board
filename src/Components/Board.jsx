@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import ItemSwitch from './itemSwitch'
 import ContextMenus from './ContextMenu/ContextMenus'
 import Controls from './Controls'
-import DefaultItem from './Items/DefaultItem'
+import Note from './Items/Note'
 
 const Board = () => {
     const [show, setShow] = useState(false)
@@ -13,7 +14,8 @@ const Board = () => {
             x: 0,
             y: 0
         },
-        color: "#58a4b0ff"
+        color: "#58a4b0ff",
+        type: "note"
     }])
 
     const addItem = (a) => {
@@ -51,7 +53,9 @@ const Board = () => {
 
             {items.map((i) => {
                 l++;
-                return (<DefaultItem key={l} {...i}/>)
+                return (
+                    <ItemSwitch item={i} key={l}/>
+                )
             })}
 
             {/* <Controls onNew={addItem}/> */}
