@@ -53,6 +53,7 @@ body, html {
 }
 
 .board-maxmap {
+  margin-right: 200px;
   grid-column: 1;
   grid-row: 1;
   background-color: rgba(255, 255, 255, .2);
@@ -64,7 +65,7 @@ body, html {
   background-color: rgba(255, 255, 255, .4);
   background-color: rgba(255, 255, 255, .2);
   width: calc(100vw / 16);
-  height: calc(100vh / 16)
+  height: calc(100vh / 16);
 }
 
 .board {
@@ -185,13 +186,6 @@ body, html {
 .board-item hr {
   border-style: solid;
 }
-
-
-
-
-
-
-
 
 .manager {
   color: var(--opal);

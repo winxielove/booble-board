@@ -16,14 +16,18 @@ const Controls = ({ onNew }) => {
             document.getElementById("board-viewer").addEventListener("scroll", onScroll)
         )
     }, [])
-
+    window.innerWidth
+    window.innerHeight
     return (
     <div className='board-controls'>
 
         <div className='board-minimap'>
 
             <div className='board-maxmap'>
-                <div className='board-mapwindow' style={scroll ? {offset: scroll.x / 8 + "px " + scroll.y / 8 + "px"} : {}}>
+                <div className='board-mapwindow' style={scroll ? {
+                marginLeft: scroll.x / (window.innerWidth / 6.2) + "vw",
+                top: scroll.y / 8 + "vh"
+                } : {}}>
                 </div>
             </div>
 
