@@ -1,5 +1,6 @@
 import { ControlledMenu, MenuDivider, MenuItem, SubMenu } from '@szhsin/react-menu'
 import React, { useEffect, useState } from 'react'
+import '@szhsin/react-menu/dist/index.css';
 
 const colors = ["d81e5b","f0544f","fdf0d5","c6d8d3","bac1b8","58a4b0"]
 
@@ -9,7 +10,7 @@ const ContextMenus = ({ contextData, anchorPoint, ev}) => {
 
     useEffect(() => {
         setOpen(true)
-    }, "")
+    }, [""])
 
   return (
     <div className='context-menu' style={{

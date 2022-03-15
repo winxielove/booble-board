@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Board from './Components/Board'
+import BoardView from './Components/BoardView'
 import Header from './Components/Header'
 import Manager from './Components/Manager'
 
@@ -12,7 +13,7 @@ function App() {
       <BrowserRouter>
       
         <Routes>
-          <Route element={<Board/>}
+          <Route element={<BoardView/>}
             path="board"
           />
           <Route element={<Manager/>}

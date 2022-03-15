@@ -21,7 +21,7 @@ const Note = (props) => {
             handle=".board-item-handle"
             defaultPosition={{x: pos.x, y: pos.y}}
             ref={ref}
-            className='board-item-draggable'
+            bounds="parent"
             >
                 <div className='board-item board-item-draggable' style={{backgroundColor: color, color: pickFont(color, "white", "#3A3335"), borderColor: pickFont(color, "#FDF0D5", "#3A3335"), boxShadow: "0px 0px 5px " + pickFont(color, "#3A3335", "#FDF0D5")}}>
                     <div className='board-item-header'>
