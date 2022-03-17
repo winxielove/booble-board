@@ -29,6 +29,8 @@ You can create one of a series of starting points for your files.
 ## Properties
 
 ### Universal Properties
-- [ ] Position
-- [ ] Rotation
-- [ ] Type
+
+| Property | Description |
+| ----------- | ----------- |
+| position | A vector with properties of x, y. |
+| type | Defines the type of Item that is in use. |

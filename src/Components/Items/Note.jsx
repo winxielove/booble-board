@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { OverlayTrigger, Popover } from 'react-bootstrap'
+import { OverlayTrigger, Popover, Tooltip } from 'react-bootstrap'
 import { BlockPicker, CompactPicker } from 'react-color'
 import { ChromePicker, HuePicker, SketchPicker } from 'react-color'
 import Draggable from 'react-draggable'
-import { MdOutlineDragHandle, MdOutlineColorLens, MdOutlineDragIndicator } from "react-icons/md"
+import { MdOutlineDragHandle, MdOutlineColorLens, MdOutlineDragIndicator, MdOutlineInfo } from "react-icons/md"
+import { usePopper } from 'react-popper'
 
 const Note = (props) => {
+
+    const [posi, setPosi] = useState(null)
+
     var {pos, color, type, title} = {...props}
     const ref = useRef()
     function pickFont(bgColor, lightColor, darkColor) {
@@ -22,6 +26,9 @@ const Note = (props) => {
             defaultPosition={{x: pos.x, y: pos.y}}
             ref={ref}
             bounds="parent"
+            onDrag={(e) => {
+                setPosi({x: ref.current.state.x, y: ref.current.state.y})
+            }}
             >
                 <div className='board-item board-item-draggable' style={{backgroundColor: color, color: pickFont(color, "white", "#3A3335"), borderColor: pickFont(color, "#FDF0D5", "#3A3335"), boxShadow: "0px 0px 5px " + pickFont(color, "#3A3335", "#FDF0D5")}}>
                     <div className='board-item-header'>
@@ -32,7 +39,8 @@ const Note = (props) => {
                     <h1>{title}</h1>
 
                     <hr />
-                    <h2>{"this is editable"}</h2>
+                    <h8>{pos.x + "x " + pos.y + "y"}</h8>
+                    <h2>{(posi) ? posi.x + "x " + posi.y + "y": ""}</h2>
                 </div>
         </Draggable>
     )

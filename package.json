@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.4",
     "@szhsin/react-menu": "^3.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
@@ -15,6 +16,7 @@
     "react-dom": "^17.0.2",
     "react-draggable": "^4.4.4",
     "react-icons": "^4.3.1",
+    "react-popper": "^2.2.5",
     "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
