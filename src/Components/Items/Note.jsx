@@ -39,7 +39,7 @@ const Note = (props) => {
                     <h1>{title}</h1>
 
                     <hr />
-                    <h8>{pos.x + "x " + pos.y + "y"}</h8>
+                    <h5>{pos.x + "x " + pos.y + "y"}</h5>
                     <h2>{(posi) ? posi.x + "x " + posi.y + "y": ""}</h2>
                 </div>
         </Draggable>

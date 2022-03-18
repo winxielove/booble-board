@@ -4,7 +4,7 @@ import ContextMenus from './ContextMenu/ContextMenus'
 import Controls from './Controls'
 import Note from './Items/Note'
 
-const Board = () => {
+const Board = ({ board }) => {
     const [show, setShow] = useState(false)
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
 
@@ -47,7 +47,7 @@ const Board = () => {
     }
     var l = 0;
     return (
-        <div className='board'>
+        <div className='board' style={{width: board.width, height: board.height}}>
 
             {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV}/>: <></>}
 
