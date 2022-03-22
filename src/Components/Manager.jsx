@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BsFillPatchPlusFill } from "react-icons/bs"
 
 const Manager = () => {
@@ -9,7 +9,17 @@ const Manager = () => {
     width: 800,
     height: 600
   })
+  const [localReload, setLocalReload] = useState(false)
+  const [localData, setlocalData] = useState([])
 
+  useEffect(() => {
+    var bds = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      bds.push(JSON.parse(localStorage.getItem(localStorage.key(i)))) 
+    }
+    setlocalData(bds)
+  }, [localReload])
+  
 
   return (
     <div className='manager'>
@@ -23,14 +33,13 @@ const Manager = () => {
           <h2>(ﾉ´ヮ`)ﾉ*: ･ﾟ</h2>
           <form onSubmit={(e) => {
             e.preventDefault()
-            const {
-              title,
-              description,
-              width,
-              height
-            } = {...formData}
-
-            console.log(title, description, width, height)
+            if (localStorage.getItem(formData.title)) {
+              console.log("value already exists!")
+            } else {
+              localStorage.setItem(formData.title, JSON.stringify(formData))
+              setLocalReload(true)
+              setShow(false)
+            }
             
           }}>
             <hr />
@@ -60,6 +69,12 @@ const Manager = () => {
 
         <h2>Boards:</h2>
         <div className='board-manager'>
+            {localData.map((b) => {
+                console.log("lasdkjfla;ksdfl")
+                return <div>
+                  <h1>{b.title}</h1>
+                </div>
+              })}
             <div className='board-manager-addnew'>
               <BsFillPatchPlusFill onClick={() => {
                 setShow(true)
