@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BsFillPatchPlusFill } from "react-icons/bs"
+import { BiWorld } from "react-icons/bi"
 
 const Manager = () => {
   const [show, setShow] = useState(false)
@@ -11,7 +12,6 @@ const Manager = () => {
   })
   const [localReload, setLocalReload] = useState(false)
   const [localData, setlocalData] = useState([])
-
   useEffect(() => {
     var bds = [];
     for (var i = 0; i < localStorage.length; i++) {
@@ -36,7 +36,13 @@ const Manager = () => {
             if (localStorage.getItem(formData.title)) {
               console.log("value already exists!")
             } else {
-              localStorage.setItem(formData.title, JSON.stringify(formData))
+              localStorage.setItem(formData.title, JSON.stringify({
+                ...formData,
+                icon: {
+                  iconType: "r-icon",
+                  name: "world"
+                }
+              }))
               setLocalReload(true)
               setShow(false)
             }
@@ -71,8 +77,13 @@ const Manager = () => {
         <div className='board-manager'>
             {localData.map((b) => {
                 console.log("lasdkjfla;ksdfl")
-                return <div>
-                  <h1>{b.title}</h1>
+                return <div className='board-manager-item'>
+                  <div className='board-manager-thumb'>
+                    {b.icon.iconType == "r-icon" && b.icon.name == "world" ? <BiWorld/>
+                    :
+                    <></>}
+                  </div>
+                  <h1 className='board-manager-title'>{b.title}</h1>
                 </div>
               })}
             <div className='board-manager-addnew'>
