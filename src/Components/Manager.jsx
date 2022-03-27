@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BsFillPatchPlusFill } from "react-icons/bs"
 import { BiWorld } from "react-icons/bi"
+import { generatePath, useNavigate } from 'react-router-dom'
 
 const Manager = () => {
   const [show, setShow] = useState(false)
@@ -12,6 +13,10 @@ const Manager = () => {
   })
   const [localReload, setLocalReload] = useState(false)
   const [localData, setlocalData] = useState([])
+  const nav = useNavigate()
+
+
+
   useEffect(() => {
     var bds = [];
     for (var i = 0; i < localStorage.length; i++) {
@@ -35,6 +40,7 @@ const Manager = () => {
             e.preventDefault()
             if (localStorage.getItem(formData.title)) {
               console.log("value already exists!")
+              setShow(false)
             } else {
               localStorage.setItem(formData.title, JSON.stringify({
                 ...formData,
@@ -44,7 +50,6 @@ const Manager = () => {
                 }
               }))
               setLocalReload(true)
-              setShow(false)
             }
             
           }}>
@@ -78,7 +83,14 @@ const Manager = () => {
             {localData.map((b) => {
                 console.log("lasdkjfla;ksdfl")
                 return <div className='board-manager-item'>
-                  <div className='board-manager-thumb'>
+                  <div className='board-manager-thumb' onClick={
+                    () => {
+                      nav(generatePath("/board/:width&:height", {
+                        width: b.width,
+                        height: b.height
+                      }))
+                    }
+                  }>
                     {b.icon.iconType == "r-icon" && b.icon.name == "world" ? <BiWorld/>
                     :
                     <></>}

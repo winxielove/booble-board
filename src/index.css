@@ -223,6 +223,7 @@ body, html {
   display: grid;
   grid-template-columns: 2em 6em 2em;
   grid-template-rows: 1em 6em 3em;
+  cursor: pointer;
 }
 
 .board-manager-item .board-manager-title {
