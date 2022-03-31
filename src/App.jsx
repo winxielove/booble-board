@@ -14,7 +14,7 @@ function App() {
       
         <Routes>
           <Route element={<BoardView/>}
-            path="board/*"
+            path="board/:width&:height"
           />
           <Route element={<Manager/>}
             path="*"

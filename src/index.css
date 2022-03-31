@@ -76,6 +76,7 @@ body, html {
   grid-area: board;
   border: var(--opal) 4px solid;
   padding: 4px;
+  place-self: center;
 }
 
 .board-item {

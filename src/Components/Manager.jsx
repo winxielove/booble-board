@@ -40,7 +40,6 @@ const Manager = () => {
             e.preventDefault()
             if (localStorage.getItem(formData.title)) {
               console.log("value already exists!")
-              setShow(false)
             } else {
               localStorage.setItem(formData.title, JSON.stringify({
                 ...formData,
@@ -49,6 +48,7 @@ const Manager = () => {
                   name: "world"
                 }
               }))
+              setShow(false)
               setLocalReload(true)
             }
             
@@ -86,8 +86,8 @@ const Manager = () => {
                   <div className='board-manager-thumb' onClick={
                     () => {
                       nav(generatePath("/board/:width&:height", {
-                        width: b.width,
-                        height: b.height
+                        "width": b.width,
+                        "height": b.height
                       }))
                     }
                   }>

@@ -23,6 +23,7 @@ const ContextMenus = ({ contextData, anchorPoint, ev}) => {
         <ControlledMenu anchorPoint={anchorPoint} state={open ? "open" : "closed"}>
             <SubMenu label='Add' direction='right' position='anchor'>
             <MenuItem className={"noselect"} onClick={(e) => {
+              console.log("boobies")
               ev({
                 title: `Untitled Note`,
                 pos: {

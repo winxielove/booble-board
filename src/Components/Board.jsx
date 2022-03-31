@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import ItemSwitch from './itemSwitch'
 import ContextMenus from './ContextMenu/ContextMenus'
 import Controls from './Controls'
@@ -18,8 +18,13 @@ const Board = ({ board }) => {
         type: "note"
     }])
 
+    const div = useRef()
+
     const addItem = (a) => {
-        setItems([...items, a])
+        setItems([...items, {...a, pos: {
+            x: a.pos.x - Math.floor(div.current.getBoundingClientRect().x),
+            y: a.pos.y - Math.floor(div.current.getBoundingClientRect().y)
+        }}])
     }
 
     const handleContextMenu = useCallback(
@@ -47,14 +52,14 @@ const Board = ({ board }) => {
     }
     var l = 0;
     return (
-        <div className='board' style={{width: board.width, height: board.height}}>
+        <div className='board' style={{width: board.width + "px", height: board.height + "px"}} ref={div}>
 
             {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV}/>: <></>}
 
             {items.map((i) => {
                 l++;
                 return (
-                    <ItemSwitch item={i} key={l}/>
+                    <ItemSwitch item={{...i, board: board}} key={l}/>
                 )
             })}
 

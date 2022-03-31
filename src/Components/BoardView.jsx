@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Board from './Board'
 import Controls from './Controls'
 
-const testSettings = {
-
-  width: 800,
-  height: 600
-
-}
-
 const BoardView = () => {
+  const { width, height } = useParams()
+
+  useEffect(() => {
+    console.log(width, height)
+  }, [])
+  
 
   return (
     <div className='board-view' id='board-viewer'>
 
         
-        <Board board={testSettings}/>
+        <Board board={{width: width, height: height}}/>
 
-        <Controls board={testSettings}/>
+        <Controls board={{width: width, height: height}}/>
 
     </div>
   )
