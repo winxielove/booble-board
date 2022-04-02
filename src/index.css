@@ -39,6 +39,7 @@ body, html {
   grid-template-columns: 10vw 80vw 10vw;
   grid-template-rows:  10vh 80vh 10vh;
   grid-template-areas: "board board board" "board board board" "board board board";
+  gap: 5vh;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -76,7 +77,9 @@ body, html {
   grid-area: board;
   border: var(--opal) 4px solid;
   padding: 4px;
-  place-self: center;
+  justify-self: center;
+  align-self: start;
+  margin: 5vh;
 }
 
 .board-item {
