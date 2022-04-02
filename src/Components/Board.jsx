@@ -27,8 +27,8 @@ const Board = ({ board }) => {
 
     const addItem = (a) => {
         setItems([...items, {...a, pos: {
-            x: Math.floor(a.pos.x - Math.abs(Math.floor(div.current.getBoundingClientRect().x - scroll.x))),
-            y: Math.floor(a.pos.y - Math.abs(Math.floor(div.current.getBoundingClientRect().y - scroll.y)))
+            x: Math.floor(a.pos.x - Math.abs(Math.floor(div.current.getBoundingClientRect().x + scroll.x))),
+            y: Math.floor(a.pos.y - Math.abs(Math.floor(div.current.getBoundingClientRect().y + scroll.y)))
         }}])
     }
 
@@ -48,8 +48,9 @@ const Board = ({ board }) => {
         document.addEventListener("click", handleClick);
         document.addEventListener("contextmenu", handleContextMenu);
         return () => {
-        document.removeEventListener("click", handleClick);
-        document.removeEventListener("contextmenu", handleContextMenu);
+            document.getElementById("board-viewer").addEventListener("scroll", onScroll)
+            document.removeEventListener("click", handleClick);
+            document.removeEventListener("contextmenu", handleContextMenu);
         };
     });
 
