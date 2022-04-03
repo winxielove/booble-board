@@ -14,13 +14,14 @@ const Board = ({ board }) => {
     }
 
     const [items, setItems] = useState([{
-        title: "Meows :)",
+        title: "Untitled Note",
         pos: {
             x: 0,
             y: 0
         },
         color: "#58a4b0ff",
-        type: "note"
+        type: "note",
+        description: "Click the pencil to Edit :)"
     }])
 
     const div = useRef()
@@ -34,11 +35,15 @@ const Board = ({ board }) => {
 
     const handleContextMenu = useCallback(
         (event) => {
-            event.preventDefault();
-            setAnchorPoint({ x: event.pageX, y: event.pageY });
-            setShow(true);
+            if (event.target.id == "board") {
+                event.preventDefault();
+                setAnchorPoint({ x: event.pageX, y: event.pageY });
+                setShow(true);
+            } else {
+                setShow((show) ? false : show)
+            }
         },
-        [setAnchorPoint]
+        [setAnchorPoint, setShow]
     );
 
     const handleClick = useCallback(() => (show ? setShow(false) : null), [show]);
@@ -48,7 +53,7 @@ const Board = ({ board }) => {
         document.addEventListener("click", handleClick);
         document.addEventListener("contextmenu", handleContextMenu);
         return () => {
-            document.getElementById("board-viewer").addEventListener("scroll", onScroll)
+            document.getElementById("board-viewer").removeEventListener("scroll", onScroll)
             document.removeEventListener("click", handleClick);
             document.removeEventListener("contextmenu", handleContextMenu);
         };
@@ -59,7 +64,7 @@ const Board = ({ board }) => {
     }
     var l = 0;
     return (
-        <div className='board' style={{width: board.width + "px", height: board.height + "px"}} ref={div}>
+        <div className='board' id='board' style={{width: board.width + "px", height: board.height + "px"}} ref={div}>
 
             {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV}/>: <></>}
 

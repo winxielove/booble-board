@@ -31,7 +31,8 @@ const ContextMenus = ({ contextData, anchorPoint, ev}) => {
                     y: scroll.y + anchorPoint.y
                 },
                 color: "#" + colors[Math.floor(Math.random() * colors.length)],
-                type: "note"
+                type: "note",
+                description: "Click the pencil to Edit :)"
               })
             }}>
                 Note

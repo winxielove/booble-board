@@ -80,9 +80,10 @@ body, html {
   justify-self: center;
   align-self: start;
   margin: 5vh;
+  overflow: hidden;
 }
 
-.board-item {
+.i-note {
   z-index: 100;
   color: white;
   border: 2px white solid;
@@ -92,35 +93,63 @@ body, html {
   box-shadow: 0px 0px 5px white;
 }
 
-.board-item-header {
+.i-note-editing {
+  border: none;
+  width: max-content;
+  background: linear-gradient(90deg, var(--bkgclr) 50%, transparent 50%), linear-gradient(90deg, var(--bkgclr) 50%, transparent 50%), linear-gradient(0deg, var(--bkgclr) 50%, transparent 50%), linear-gradient(0deg, var(--bkgclr) 50%, transparent 50%);
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  background-size: 15px 4px, 15px 4px, 4px 15px, 4px 15px;
+  padding: 12px;
+  animation: border-dance 4s infinite linear;
+}
+
+@keyframes border-dance {
+  0% {
+    background-position: 0 0, 100% 100%, 0 100%, 100% 0;
+  }
+  100% {
+    background-position: 100% 0, 0 100%, 0 0, 100% 100%;
+  }
+}
+
+
+.i-note-header {
   display: flex;
   justify-content: space-between;
 }
 
-.board-item-handle {
+.i-note-handle {
   display: inline;
   text-align: center;
   width: fit-content;
 }
 
-.board-item-handle:hover {
+.i-note-handle:hover {
   cursor: grab;
 }
 
-.board-item-handle:active {
+.i-note-handle:active {
   cursor: grabbing;
 }
 
-.board-item-color {
+.i-note-pencil {
+  cursor:copy;
+}
+
+.i-note-color {
   display: inline;
 }
 
-.board-item-color:hover {
+.i-note-color:hover {
   cursor: copy;
 }
 
-.board-item h1 {
+.i-note h1 {
   line-height: 0;
+}
+
+.i-note-check {
+  cursor: pointer;
 }
 
 .board-controls {
@@ -184,11 +213,11 @@ body, html {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.board-item-draggable {
+.i-note-draggable {
   position: absolute;
 }
 
-.board-item hr {
+.i-note hr {
   border-style: solid;
 }
 
