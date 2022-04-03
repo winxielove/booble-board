@@ -3,7 +3,8 @@ import { OverlayTrigger, Popover, Tooltip } from 'react-bootstrap'
 import { BlockPicker, CompactPicker } from 'react-color'
 import { ChromePicker, HuePicker, SketchPicker } from 'react-color'
 import Draggable from 'react-draggable'
-import { MdOutlineDragIndicator, MdModeEditOutline, MdCheck } from "react-icons/md"
+import { IconContext } from "react-icons"
+import { MdOutlineDragIndicator, MdModeEditOutline, MdCheck, MdDelete, MdDeleteForever, MdDeleteSweep, MdCancel } from "react-icons/md"
 import { usePopper } from 'react-popper'
 
 const Note = (props) => {
@@ -11,8 +12,11 @@ const Note = (props) => {
     const [posi, setPosi] = useState(null)
     const [size, setSize] = useState({width: 0, height: 0})
     const [editing, setEditing] = useState(false)
-
-    var {pos, color, type, title, description, board} = {...props}
+    const [editor, setEditor] = useState({
+        ...props
+    })
+    var {pos, color, title, description, board, act, k} = {...props}
+    console.log(k)
     const ref = useRef()
     const divRef = useRef()
     function pickFont(bgColor, lightColor, darkColor) {
@@ -41,6 +45,7 @@ const Note = (props) => {
             onDrag={(e) => {
                 setSize({width: divRef.current.clientWidth, height: divRef.current.clientHeight})
             }}
+            key={k}
             >
                 <div ref={divRef}
                     className={`i-note i-note-draggable ${editing ? "i-note-editing" : ""}`}
@@ -55,23 +60,53 @@ const Note = (props) => {
                         >
                     <div className='i-note-header'>
                         <div className='i-note-handle'>
-                            <MdOutlineDragIndicator color={pickFont(color, "#FDF0D5", "#3A3335")}/>
+                            <MdOutlineDragIndicator className='i-note-handle'/>
                         </div>
                         {(editing) ?
-                        <MdCheck color={pickFont(color, "#FDF0D5", "#3A3335")} className="i-note-check"
-                        onClick={() => {
-                            setEditing(false)
-                        }}/>
+                        <div>
+                            <MdCheck   className="i-note-check"
+                            onClick={() => {
+                                act("edit",  k, editor)
+                                setEditing(false)
+                            }}/>
+                            <MdCancel  className='i-note-cancel' onClick={() => {
+                                setEditor({...props})
+                                setEditing(false)
+                            }}/>
+                        </div>
                         :
-                        <MdModeEditOutline color={pickFont(color, "#FDF0D5", "#3A3335")} className="i-note-pencil"
+                        <MdModeEditOutline   className="i-note-pencil"
                         onClick={() => {
+                            setEditor({...props})
                             setEditing(true)
                         }}/>}
                     </div>
-                    <h1>{title}</h1>
+                    {editing ? <form onSubmit={(e) => {e.preventDefault()}}>
+                        <label>Title: </label><input value={editor.title} onChange={
+                            (e) => {
+                                setEditor({...editor, title: e.target.value})
+                            }
+                        }/>
+                        <br /><br />
+                        <label>Description: </label><input value={editor.description} onChange={
+                            (e) => {
+                                setEditor({...editor, description: e.target.value})
+                            }
+                        }/>
+                        <hr />
+                    </form> : <div>
+                            <h1>{editor.title}</h1>
 
-                    <hr />
-                    <h5>{description}</h5>
+                            <hr />
+                            <h5>{editor.description}</h5>
+                        </div>}
+
+                    {editing ? <div className='i-note-toolbar'>
+                        <MdDelete className='i-note-delete' onClick={() => {
+                            console.log("FUCK")
+                            act("delete",  k)
+                        }}/>
+                    </div> : <></>}
                 </div>
         </Draggable>
     )

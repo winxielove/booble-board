@@ -4,7 +4,7 @@ import '@szhsin/react-menu/dist/index.css';
 
 const colors = ["d81e5b","f0544f","fdf0d5","c6d8d3","bac1b8","58a4b0"]
 
-const ContextMenus = ({ contextData, anchorPoint, ev}) => {
+const ContextMenus = ({ contextData, anchorPoint, ev, act}) => {
 
     const [open, setOpen] = useState(false)
     const [scroll, setScroll] = useState()
@@ -32,7 +32,8 @@ const ContextMenus = ({ contextData, anchorPoint, ev}) => {
                 },
                 color: "#" + colors[Math.floor(Math.random() * colors.length)],
                 type: "note",
-                description: "Click the pencil to Edit :)"
+                description: "Click the pencil to Edit :)",
+                act: act
               })
             }}>
                 Note

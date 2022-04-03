@@ -8,9 +8,27 @@ const Board = ({ board }) => {
     const [show, setShow] = useState(false)
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
     const [scroll, setScroll] = useState({ x: 0, y: 0 })
+    const [reload, setReload] = useState(false)
 
     const onScroll = (e) => {
         setScroll({x: e.target.scrollLeft, y: e.target.scrollTop})
+    }
+
+    const act = (a, key, edits) => {
+        var i = items;
+        switch (a) {
+            case "delete":
+                console.log("delete")
+                i[key] = "del"
+                break;
+            case "edit":
+                console.log("edit")
+                i[key] = edits;
+                break;
+        }
+        console.log(i)
+        setItems(i)
+        setReload(!reload)
     }
 
     const [items, setItems] = useState([{
@@ -21,7 +39,8 @@ const Board = ({ board }) => {
         },
         color: "#58a4b0ff",
         type: "note",
-        description: "Click the pencil to Edit :)"
+        description: "Click the pencil to Edit :)",
+        act: act
     }])
 
     const div = useRef()
@@ -62,17 +81,23 @@ const Board = ({ board }) => {
     const contextEV = (e) => {
         addItem(e)
     }
-    var l = 0;
+    var l = -1;
     return (
         <div className='board' id='board' style={{width: board.width + "px", height: board.height + "px"}} ref={div}>
 
-            {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV}/>: <></>}
+            {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV} act={act}/>: <></>}
 
             {items.map((i) => {
-                l++;
-                return (
-                    <ItemSwitch item={{...i, board: board}} key={l}/>
-                )
+                if (i !== "del") {
+                    l++;
+                    return (
+                        <ItemSwitch item={{...i, board: board}} key={l} k={l}/>
+                    )
+                } else {
+                    return (
+                        <></>
+                    )
+                }
             })}
 
             {/* <Controls onNew={addItem}/> */}

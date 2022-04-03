@@ -113,7 +113,7 @@ body, html {
 }
 
 
-.i-note-header {
+.i-note-header, .i-note-footer {
   display: flex;
   justify-content: space-between;
 }
@@ -149,6 +149,10 @@ body, html {
 }
 
 .i-note-check {
+  cursor: pointer;
+}
+
+.i-note-delete {
   cursor: pointer;
 }
 
