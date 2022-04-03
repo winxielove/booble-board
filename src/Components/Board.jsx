@@ -9,6 +9,7 @@ const Board = ({ board }) => {
     const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
     const [scroll, setScroll] = useState({ x: 0, y: 0 })
     const [reload, setReload] = useState(false)
+    const [items, setItems] = useState([])
 
     const onScroll = (e) => {
         setScroll({x: e.target.scrollLeft, y: e.target.scrollTop})
@@ -30,18 +31,6 @@ const Board = ({ board }) => {
         setItems(i)
         setReload(!reload)
     }
-
-    const [items, setItems] = useState([{
-        title: "Untitled Note",
-        pos: {
-            x: 0,
-            y: 0
-        },
-        color: "#58a4b0ff",
-        type: "note",
-        description: "Click the pencil to Edit :)",
-        act: act
-    }])
 
     const div = useRef()
 

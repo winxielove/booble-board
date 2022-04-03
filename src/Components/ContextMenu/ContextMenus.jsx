@@ -23,7 +23,6 @@ const ContextMenus = ({ contextData, anchorPoint, ev, act}) => {
         <ControlledMenu anchorPoint={anchorPoint} state={open ? "open" : "closed"}>
             <SubMenu label='Add' direction='right' position='anchor'>
             <MenuItem className={"noselect"} onClick={(e) => {
-              console.log("boobies")
               ev({
                 title: `Untitled Note`,
                 pos: {
@@ -37,6 +36,20 @@ const ContextMenus = ({ contextData, anchorPoint, ev, act}) => {
               })
             }}>
                 Note
+            </MenuItem>
+            <MenuItem className={"noselect"} onClick={(e) => {
+              ev({
+                title: `Untitled Pin`,
+                pos: {
+                    x: scroll.x + anchorPoint.x,
+                    y: scroll.y + anchorPoint.y
+                },
+                color: "#" + colors[Math.floor(Math.random() * colors.length)],
+                type: "pin",
+                act: act
+              })
+            }}>
+                Pin
             </MenuItem>
             </SubMenu>
             <MenuItem>
