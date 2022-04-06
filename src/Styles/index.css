@@ -280,3 +280,19 @@ body, html {
   border-style: inset;
   cursor: grabbing;
 }
+
+.board-layers {
+  position: fixed;
+  top: 0;
+  right: 0;
+  min-width: 12vw;
+  min-height: 12vw;
+  background-color: rgba(255, 255, 255, .4);
+  padding: 10px;
+}
+
+.board-layers h1 {
+  color: white;
+  font-size: medium;
+  border-bottom: 1px white solid;
+}

@@ -38,6 +38,7 @@ const ContextMenus = ({ contextData, anchorPoint, ev, act}) => {
                 Note
             </MenuItem>
             <MenuItem className={"noselect"} onClick={(e) => {
+              console.log("PIN")
               ev({
                 title: `Untitled Pin`,
                 pos: {

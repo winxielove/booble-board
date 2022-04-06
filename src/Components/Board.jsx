@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import ItemSwitch from './itemSwitch'
 import ContextMenus from './ContextMenu/ContextMenus'
-import Controls from './Controls'
-import Note from './Items/Note'
 
 const Board = ({ board }) => {
     const [show, setShow] = useState(false)
@@ -17,10 +15,11 @@ const Board = ({ board }) => {
 
     const act = (a, key, edits) => {
         var i = items;
+        console.log(a, items, i[key])
         switch (a) {
             case "delete":
                 console.log("delete")
-                i[key] = "del"
+                i[key] = "deleletme"
                 break;
             case "edit":
                 console.log("edit")
@@ -39,6 +38,7 @@ const Board = ({ board }) => {
             x: Math.floor(a.pos.x - Math.abs(Math.floor(div.current.getBoundingClientRect().x + scroll.x))),
             y: Math.floor(a.pos.y - Math.abs(Math.floor(div.current.getBoundingClientRect().y + scroll.y)))
         }}])
+        console.log(items)
     }
 
     const handleContextMenu = useCallback(
@@ -77,7 +77,7 @@ const Board = ({ board }) => {
             {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV} act={act}/>: <></>}
 
             {items.map((i) => {
-                if (i !== "del") {
+                if (i !== "deleletme") {
                     l++;
                     return (
                         <ItemSwitch item={{...i, board: board}} key={l} k={l}/>
@@ -89,7 +89,15 @@ const Board = ({ board }) => {
                 }
             })}
 
-            {/* <Controls onNew={addItem}/> */}
+            <div className='board-layers'>
+                {items.map((i) => {
+                    return (
+                        <div>
+                            <h1>{i.type + ", named " + i.title}</h1>
+                        </div>
+                    )
+                })}
+            </div>
             
         </div>
     )

@@ -8,8 +8,10 @@ const Pin = (props) => {
         width: 0,
         height: 0
     })
+    const [show, setShow] = useState(false)
     var {pos, color, title, board, act, k} = {...props}
     const ref = useRef()
+    const divRef = useRef()
 
   return (
     <Draggable
@@ -24,11 +26,19 @@ const Pin = (props) => {
         }}
         key={k}
     >
-        <div className='i-pin' style={{
+        <div className='i-pin' ref={divRef} style={{
             backgroundColor: color,
             border: "2px solid " + pickFont(color, "#FDF0D5", "#3A3335"),
             boxShadow: "0px 0px 5px " + pickFont(color, "#3A3335", "#FDF0D5")
-        }}>
+        }}
+            onMouseEnter={() => {
+                setShow(true)
+            }}
+            onMouseLeave={() => {
+                setShow(false)
+            }}
+        >
+            {show ? <h2>{title}</h2> : <></>}
         </div>
     </Draggable>
   )
