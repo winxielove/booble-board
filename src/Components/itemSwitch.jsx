@@ -3,14 +3,14 @@ import Note from './Items/Note'
 import Pin from './Items/Pin'
 
 const ItemSwitch = (props) => {
-    const {item, k} = {...props}
+    const {item} = {...props}
     switch (item.type) {
         case "pin":
-            return (<Pin {...item} k={k}/>)
+            return (<Pin {...item}/>)
         case "note":
-            return (<Note {...item} k={k}/>)
+            return (<Note {...item}/>)
         default:
-            return (<Note {...item} k={k}/>)
+            return (<Note {...item}/>)
     }
 }
 

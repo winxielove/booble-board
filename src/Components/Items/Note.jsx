@@ -4,7 +4,7 @@ import { BlockPicker, CompactPicker } from 'react-color'
 import { ChromePicker, HuePicker, SketchPicker } from 'react-color'
 import Draggable from 'react-draggable'
 import { IconContext } from "react-icons"
-import { MdOutlineDragIndicator, MdModeEditOutline, MdCheck, MdDelete, MdDeleteForever, MdDeleteSweep, MdCancel } from "react-icons/md"
+import { MdOutlineDragIndicator, MdModeEditOutline, MdCheck, MdDelete, MdCancel } from "react-icons/md"
 import { usePopper } from 'react-popper'
 import pickFont from '../../Modules/pickFont'
 import "../../Styles/Note.css"
@@ -18,7 +18,6 @@ const Note = (props) => {
         ...props
     })
     var {pos, color, title, description, board, act, k} = {...props}
-    console.log(k)
     const ref = useRef()
     const divRef = useRef()
 
@@ -35,7 +34,7 @@ const Note = (props) => {
             bounds={{left: 0,
             top: 0,
             right: parseInt(board.width - size.width - 4),
-            bottom: parseInt(board.height - size.height - 4)}}
+            bottom: parseInt(board.height - size.height - 5)}}
             onDrag={(e) => {
                 setSize({width: divRef.current.clientWidth, height: divRef.current.clientHeight})
             }}

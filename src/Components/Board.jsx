@@ -15,18 +15,15 @@ const Board = ({ board }) => {
 
     const act = (a, key, edits) => {
         var i = items;
-        console.log(a, items, i[key])
+        var indxOf = i.findIndex(m => m.index == a.index);
         switch (a) {
             case "delete":
-                console.log("delete")
-                i[key] = "deleletme"
+                i.splice(indxOf, 1)
                 break;
             case "edit":
-                console.log("edit")
-                i[key] = edits;
+                i[indxOf] = edits;
                 break;
         }
-        console.log(i)
         setItems(i)
         setReload(!reload)
     }
@@ -34,11 +31,13 @@ const Board = ({ board }) => {
     const div = useRef()
 
     const addItem = (a) => {
-        setItems([...items, {...a, pos: {
-            x: Math.floor(a.pos.x - Math.abs(Math.floor(div.current.getBoundingClientRect().x + scroll.x))),
-            y: Math.floor(a.pos.y - Math.abs(Math.floor(div.current.getBoundingClientRect().y + scroll.y)))
-        }}])
-        console.log(items)
+        setItems(() => {
+            items.push({...a, pos: {
+                x: Math.floor(a.pos.x - Math.abs(Math.floor(div.current.getBoundingClientRect().x + scroll.x))),
+                y: Math.floor(a.pos.y - Math.abs(Math.floor(div.current.getBoundingClientRect().y + scroll.y)))
+            }})
+            return items;
+        })
     }
 
     const handleContextMenu = useCallback(
@@ -70,17 +69,15 @@ const Board = ({ board }) => {
     const contextEV = (e) => {
         addItem(e)
     }
-    var l = -1;
     return (
         <div className='board' id='board' style={{width: board.width + "px", height: board.height + "px"}} ref={div}>
 
-            {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV} act={act}/>: <></>}
+            {show ? <ContextMenus anchorPoint={anchorPoint} ev={contextEV} act={act} ind={items.length}/>: <></>}
 
             {items.map((i) => {
                 if (i !== "deleletme") {
-                    l++;
                     return (
-                        <ItemSwitch item={{...i, board: board}} key={l} k={l}/>
+                        <ItemSwitch item={{...i, board: board}}/>
                     )
                 } else {
                     return (

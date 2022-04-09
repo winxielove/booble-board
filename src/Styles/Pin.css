@@ -7,6 +7,7 @@
     align-content: center;
     grid-template-columns: 2em;
     grid-template-rows: 2em;
+    margin: 0;
 }
 
 .i-pin h2 {
@@ -16,8 +17,17 @@
     margin: 0;
     place-self: center;
     font-size: medium;
-    transform: translate(0, -2em);
+    transform: translate(0, -1.75em);
     animation: titleEntry .25s ease-in-out;
+}
+.i-pin-editor {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    left: 40%;
+    bottom: 100%;
+    position: absolute;
+    animation: pencilEntry .25s ease-in-out;
 }
 
 @keyframes titleEntry {
@@ -27,6 +37,17 @@
     }
     100% {
         opacity: 1;
-        transform: translate(0, -2em);
+        transform: translate(0, -1.75em);
+    }
+}
+
+@keyframes pencilEntry {
+    0% {
+        opacity: 0;
+        transform: translate(0, -1em);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
     }
 }

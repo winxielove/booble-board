@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { MdModeEditOutline } from "react-icons/md"
 import Draggable from 'react-draggable'
 import "../../Styles/Pin.css"
 import pickFont from '../../Modules/pickFont'
@@ -9,6 +10,8 @@ const Pin = (props) => {
         height: 0
     })
     const [show, setShow] = useState(false)
+    const [editing, setEditing] = useState(false)
+    const [showPencil, setShowPencil] = useState(false)
     var {pos, color, title, board, act, k} = {...props}
     const ref = useRef()
     const divRef = useRef()
@@ -38,7 +41,16 @@ const Pin = (props) => {
                 setShow(false)
             }}
         >
-            {show ? <h2>{title}</h2> : <></>}
+            {show ? <h2
+                onMouseEnter={() => {
+                    setShowPencil(true)
+                }}
+                onMouseLeave={() => {
+                    setShowPencil(false)
+                }}
+            >{showPencil ? <div className='i-pin-editor'>
+            <MdModeEditOutline/>
+        </div> : <></>}{title}</h2> : <></>}
         </div>
     </Draggable>
   )
