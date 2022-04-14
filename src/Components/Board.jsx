@@ -8,6 +8,7 @@ const Board = ({ board }) => {
     const [scroll, setScroll] = useState({ x: 0, y: 0 })
     const [reload, setReload] = useState(false)
     const [items, setItems] = useState([])
+    const [adjMatrix, setAdjMatrix] = useState([])
 
     const onScroll = (e) => {
         setScroll({x: e.target.scrollLeft, y: e.target.scrollTop})
@@ -65,6 +66,12 @@ const Board = ({ board }) => {
             document.removeEventListener("contextmenu", handleContextMenu);
         };
     });
+
+    useEffect(() => {
+        var construct = new Array(items.length).fill(new Array(items.length).fill(0))
+        setAdjMatrix(construct)
+    }, [items])
+    
 
     const contextEV = (e) => {
         addItem(e)

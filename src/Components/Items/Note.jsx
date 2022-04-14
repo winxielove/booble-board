@@ -23,7 +23,7 @@ const Note = (props) => {
 
     useEffect(() => {
         console.log(pos)
-        setSize({width: divRef.current.clientWidth, height: divRef.current.clientHeight})
+        setSize({width: ref.current.clientWidth, height: ref.current.clientHeight})
     }, [])
     
     return (
@@ -33,8 +33,8 @@ const Note = (props) => {
             ref={ref}
             bounds={{left: 0,
             top: 0,
-            right: parseInt(board.width - size.width - 4),
-            bottom: parseInt(board.height - size.height - 5)}}
+            right: parseInt(board.width - size.width),
+            bottom: parseInt(board.height - size.height)}}
             onDrag={(e) => {
                 setSize({width: divRef.current.clientWidth, height: divRef.current.clientHeight})
             }}

@@ -321,6 +321,34 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@svg-drawing/animation@4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@svg-drawing/animation/-/animation-4.2.2.tgz#618ebec41dda6aedce67664d1d15f1904b244116"
+  integrity sha512-K1HXQtEjsX4/sbLrrIKXC3StiIv8Szi+bubIj7T1FNmJS1jx6ZKuSaiXYleOPObMf76LjxgBFh5NR3wsSxLivg==
+  optionalDependencies:
+    "@svg-drawing/core" "4.2.2"
+
+"@svg-drawing/core@4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@svg-drawing/core/-/core-4.2.2.tgz#536364e6a13be072d2d4e8e34cddd70fd3e28088"
+  integrity sha512-jjPgbCvekzpHoMqLFz2qmaCXQOp3WMoA0/3PZhG2HSMl3vkEgj72tDMwjUc8YdrrhU7GwTLO2l44YUmQwcdy0g==
+
+"@svg-drawing/img-trace@4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@svg-drawing/img-trace/-/img-trace-4.2.2.tgz#82080710a3f76a2c9aea27588b42f077421ffa34"
+  integrity sha512-HQzJSYay3PZg4CxNoZw0Y//FFT02AJwRVYOWjYAudBzAVWPNLxptZY/s0SXwGENOW+7hKJLRJ7hgBfcDj3SR4g==
+  optionalDependencies:
+    "@svg-drawing/animation" "4.2.2"
+    "@svg-drawing/core" "4.2.2"
+
+"@svg-drawing/react@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@svg-drawing/react/-/react-4.2.2.tgz#574cf6afe9ddde8f636c247d745deb489d6a78c8"
+  integrity sha512-eNYfGOn7v/pbw0n+pgAJqvNsM1L94IYCu8uan7yoG+E8RlPe5HvtXtAMbhySFwVj30GYZY4NcqvRB79r5b+KtQ==
+  optionalDependencies:
+    "@svg-drawing/core" "4.2.2"
+    "@svg-drawing/img-trace" "4.2.2"
+
 "@szhsin/react-menu@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.0.0.tgz#918ffda4d3583372715c60311950010f28afb2c2"
@@ -754,6 +782,15 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
+prop-types@15.7.2:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
@@ -825,7 +862,7 @@ react-icons@^4.3.1:
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.3.1.tgz#2fa92aebbbc71f43d2db2ed1aed07361124e91ca"
   integrity sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==
 
-react-is@^16.13.1, react-is@^16.3.2:
+react-is@^16.13.1, react-is@^16.3.2, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -834,6 +871,14 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-lineto@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-lineto/-/react-lineto-3.3.0.tgz#0ca2e59ecd6b8615aa1edfa515b6feac57449d02"
+  integrity sha512-mDs9aX2ryM7lQ9G+XYZKmDmogzpR/2j1YYVQNDrcDbdgKloWOWcKaMkRX/9Ya4PHang4N1qxBbH3GUAIByDa6w==
+  dependencies:
+    prop-types "15.7.2"
+    react "17.0.2"
 
 react-popper@^2.2.5:
   version "2.2.5"
@@ -878,7 +923,7 @@ react-transition-state@^1.1.4:
   resolved "https://registry.yarnpkg.com/react-transition-state/-/react-transition-state-1.1.4.tgz#113224eaa27e0ff81661305e44d5e0348cdf61ac"
   integrity sha512-6nQLWWx95gYazCm6OdtD1zGbRiirvVXPrDtHAGsYb4xs9spMM7bA8Vx77KCpjL8PJ8qz1lXFGz2PTboCSvt7iw==
 
-react@^17.0.2:
+react@17.0.2, react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==

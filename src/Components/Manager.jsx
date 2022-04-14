@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BsFillPatchPlusFill } from "react-icons/bs"
-import { BiWorld } from "react-icons/bi"
+import { BiTrash, BiWorld } from "react-icons/bi"
 import { generatePath, useNavigate } from 'react-router-dom'
 
 const Manager = () => {
@@ -81,29 +81,32 @@ const Manager = () => {
         <h2>Boards:</h2>
         <div className='board-manager'>
             {localData.map((b) => {
-                console.log("lasdkjfla;ksdfl")
-                return <div className='board-manager-item'>
+                return <div className='board-manager-item' >
                   <div className='board-manager-thumb' onClick={
-                    () => {
-                      nav(generatePath("/board/:width&:height", {
-                        "width": b.width,
-                        "height": b.height
-                      }))
-                    }
-                  }>
+                  () => {
+                    nav(generatePath("/board/:width&:height", {
+                      "width": b.width,
+                      "height": b.height
+                    }))
+                  }
+                }>
                     {b.icon.iconType == "r-icon" && b.icon.name == "world" ? <BiWorld/>
                     :
                     <></>}
                   </div>
                   <h1 className='board-manager-title'>{b.title}</h1>
+                  <BiTrash onClick={() => {
+                    localStorage.removeItem(b.title)
+                    setLocalReload(!localReload)
+                  }}/>
                 </div>
               })}
-            <div className='board-manager-addnew'>
+        </div>
+        <div className='board-manager-addnew'>
               <BsFillPatchPlusFill onClick={() => {
                 setShow(true)
               }}/>
             </div>
-        </div>
     </div>
   )
 }

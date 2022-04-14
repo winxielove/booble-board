@@ -177,16 +177,16 @@ body, html {
 .board-manager-item {
   background-color: var(--ash-gray);
   color: var(--ruby);
-  width: 10em;
-  height: 10em;
-  border-radius: 1em;
-  max-width: 10em;
-  max-height: 10em;
-  min-width: 10em;
-  min-height: 10em;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  max-width: 100px;
+  max-height: 100px;
+  min-width: 100px;
+  min-height: 100px;
   display: grid;
-  grid-template-columns: 2em 6em 2em;
-  grid-template-rows: 1em 6em 3em;
+  grid-template-columns: 20px 60px 20px;
+  grid-template-rows: 10px 60px 30px;
   cursor: pointer;
 }
 
@@ -203,6 +203,7 @@ body, html {
   text-align: center;
   padding: 0;
   margin: 0;
+  font-size: medium;
 }
 
 .board-manager-item .board-manager-thumb {
@@ -227,6 +228,7 @@ body, html {
 }
 
 .board-manager-addnew {
+  margin: 0 auto;
   width: 6em;
   height: 6em;
 }
