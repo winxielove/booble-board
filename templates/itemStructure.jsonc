@@ -2,21 +2,24 @@
     //Default Item Structure
     {
         //Uuiversally Unique Identifier, a unique value used for the Item
-        "uuid": "uuidType",
+        "itemId": "uuid",
+
+        //Type used for identifying what kind of item it is,
+        "type": "string",
 
         //data used for ownership, creation date, etc
         "metadata": {
-            "owner": "uuidType"
+            "owner": "uuid"
             //metadataTypes
         },
 
         //visual data used for creating the appearance of the Item
         "data": {
-            //dataTypes
+            //Varies
         },
 
         "config": {
-            "layer": "layerType",
+            "layer": "number",
             "visible": "boolean"
         }
     }

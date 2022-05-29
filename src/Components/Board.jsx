@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import ItemSwitch from './itemSwitch'
+import ItemSwitch from './Items/itemSwitch'
 import ContextMenus from './ContextMenu/ContextMenus'
 
 const Board = ({ board }) => {
@@ -76,6 +76,7 @@ const Board = ({ board }) => {
     const contextEV = (e) => {
         addItem(e)
     }
+    
     return (
         <div className='board' id='board' style={{width: board.width + "px", height: board.height + "px"}} ref={div}>
 

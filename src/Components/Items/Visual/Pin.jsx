@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { MdModeEditOutline } from "react-icons/md"
 import Draggable from 'react-draggable'
-import "../../Styles/Pin.css"
-import pickFont from '../../Modules/pickFont'
+import "../../../Styles/Pin.css"
+import pickFont from '../../../Modules/pickFont'
 
 const Pin = (props) => {
     const [size, setSize] = useState({

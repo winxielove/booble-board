@@ -1,13 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { OverlayTrigger, Popover, Tooltip } from 'react-bootstrap'
-import { BlockPicker, CompactPicker } from 'react-color'
-import { ChromePicker, HuePicker, SketchPicker } from 'react-color'
 import Draggable from 'react-draggable'
-import { IconContext } from "react-icons"
 import { MdOutlineDragIndicator, MdModeEditOutline, MdCheck, MdDelete, MdCancel } from "react-icons/md"
-import { usePopper } from 'react-popper'
-import pickFont from '../../Modules/pickFont'
-import "../../Styles/Note.css"
+import pickFont from '../../../Modules/pickFont'
+import "../../../Styles/Note.css"
 
 const Note = (props) => {
 

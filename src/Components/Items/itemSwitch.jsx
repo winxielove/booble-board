@@ -1,6 +1,6 @@
 import React from 'react'
-import Note from './Items/Note'
-import Pin from './Items/Pin'
+import Note from './Visual/Note'
+import Pin from './Visual/Pin'
 
 const ItemSwitch = (props) => {
     const {item} = {...props}
